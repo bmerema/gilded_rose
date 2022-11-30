@@ -22,6 +22,15 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(item.quality, expected['quality'])
         self.assertEqual(item.sell_in, expected['sell_in'])
 
+    def test_quality_does_not_increase_above_50(self):
+        items = [Item("Aged Brie", 4, 50)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        expected = {'sell_in': 3, 'quality': 50}
+        item = items[0]
+        self.assertEqual(item.quality, expected['quality'])
+        self.assertEqual(item.sell_in, expected['sell_in'])
+
 
 # def test_quality
 # def test_aged_brie
